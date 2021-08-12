@@ -44,10 +44,47 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/firebase'
   ],
 
   bootstrapVue: {
     icons: true
+  },
+
+  firebase: {
+    config: {
+      apiKey: "AIzaSyBhusBI1UAhuabDVXGSAFbQOxcN1_izN6Y",
+      authDomain: "rugames-88.firebaseapp.com",
+      projectId: "rugames-88",
+      storageBucket: "rugames-88.appspot.com",
+      messagingSenderId: "685219063149",
+      appId: "1:685219063149:web:51acc89c3b41e7deac6664"
+    },
+    services: {
+      auth: true,
+      firestore: true
+    },
+    auth: {
+      persistence: 'local', // default
+      initialize: {
+        onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
+        onAuthStateChangedAction: 'onAuthStateChangedAction',
+        subscribeManually: false
+      },
+      ssr: false, // default
+      emulatorPort: 9099,
+      emulatorHost: 'http://localhost',
+    },
+    firestore: {
+      memoryOnly: false, // default
+      chunkName: process.env.NODE_ENV !== 'production' ? 'firebase-auth' : '[id]', // default
+      enablePersistence: true,
+      emulatorPort: 8080,
+      emulatorHost: 'localhost',
+      settings: {
+        // Firestore Settings - currently only works in SPA mode
+      }
+    }
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
