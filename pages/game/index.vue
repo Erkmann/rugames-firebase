@@ -137,8 +137,13 @@ export default {
         ano: this.updateModal.ano
       }).then(response => {
         this.$toast.success('Jogo atualizado com sucesso!')
-        console.log(this.getGame(id))
-        this.setGame(this.getGame(id))
+        this.setGame({
+          id: id,
+          nome: this.updateModal.nome,
+          empresa: this.updateModal.empresa,
+          imagem: this.updateModal.imagem,
+          ano: this.updateModal.ano
+        })
         this.updateModal.show = false
       })
 
