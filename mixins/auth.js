@@ -30,6 +30,15 @@ export default {
       ).catch(response => {
         this.$toast.error('Algo deu errado!')
       })
+    },
+    
+    async cadastro(email, senha) {
+      await this.$fire.auth.createUserWithEmailAndPassword(email, senha).then(response => {
+        this.$toast.success('Cadastrado realizado com sucesso!')
+        this.$router.push('/login')
+      }).catch(response => {
+        this.$toast.error('Algo deu errado!')
+      })
     }
   },
   computed: {

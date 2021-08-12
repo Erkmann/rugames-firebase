@@ -6,8 +6,8 @@
       offset-md="3"
       class="border border-secondary p-2 rounded shadow"
     >
-      <h1 class="h1 font-custom text-center">Login</h1>
-      <b-form @submit.prevent="login(form.email, form.senha)">
+      <h1 class="h1 font-custom text-center">Cadastro</h1>
+      <b-form @submit.prevent="cadastro(form.email, form.senha)">
         <b-form-group id="input-group-1" label="Email:" label-for="input-1">
           <b-form-input
             id="input-1"
@@ -25,9 +25,8 @@
             v-model="form.senha"
             required
           ></b-form-input>
-          <small>Nao tem conta? <nuxt-link to="/login/cadastro">Cadastre-se</nuxt-link></small>
         </b-form-group>
-        <b-button type="submit" variant="primary">Logar</b-button>
+        <b-button type="submit" variant="primary">Cadastrar</b-button>
       </b-form>
     </b-col>
   </b-row>
