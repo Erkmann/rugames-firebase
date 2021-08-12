@@ -12,10 +12,9 @@
         <b-nav-item-dropdown right v-if="isLogado">
           <!-- Using 'button-content' slot -->
           <template #button-content>
-            <em>User</em>
+            <em>{{ $store.state.authentication.user.email }}</em>
           </template>
-          <b-dropdown-item href="#">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          <b-dropdown-item href="#" @click.prevent="logout()">Sair</b-dropdown-item>
         </b-nav-item-dropdown>
         <template right v-else>
           <b-button @click="redirect('/login')" variant="light" class=""><b-icon icon="box-arrow-right"></b-icon> Login</b-button>

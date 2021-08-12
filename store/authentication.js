@@ -4,7 +4,10 @@ export const state = () => ({
 })
   
 export const mutations = {
-    setUser(state, newUser) {
+    setUserStore(state, newUser) {
         state.user = newUser
+    },
+    setLogado(state, newLogado) {
+        state.logged = newLogado
     }
 }

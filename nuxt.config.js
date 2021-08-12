@@ -44,7 +44,8 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/firebase'
+    '@nuxtjs/firebase',
+    '@nuxtjs/toast',
   ],
 
   bootstrapVue: {
@@ -85,6 +86,12 @@ export default {
         // Firestore Settings - currently only works in SPA mode
       }
     }
+  },
+
+  toast: {
+    position: 'top-right',
+    duration: 3000,
+    theme: 'bubble'
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

@@ -7,11 +7,12 @@
       class="border border-secondary p-2 rounded shadow"
     >
       <h1 class="h1 font-custom text-center">Login</h1>
-      <b-form @submit.prevent="login(form.email, form.password)">
+      <b-form @submit.prevent="login(form.email, form.senha)">
         <b-form-group id="input-group-1" label="Email:" label-for="input-1">
           <b-form-input
             id="input-1"
             type="email"
+            v-model="form.email"
             placeholder="rugames@gmail.com"
             required
           ></b-form-input>
@@ -21,6 +22,7 @@
             id="input-2"
             type="password"
             placeholder="****"
+            v-model="form.senha"
             required
           ></b-form-input>
         </b-form-group>

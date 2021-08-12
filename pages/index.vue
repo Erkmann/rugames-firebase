@@ -12,16 +12,20 @@
         </div>
       </b-col>
       <b-col cols="2" class="text-right">
-        <button @click="addModal.show = true" class="btn btn-primary btn-sm">
+        <button
+          v-if="isLogado"
+          @click="addModal.show = true"
+          class="btn btn-primary btn-sm"
+        >
           <b-icon icon="plus"></b-icon>
         </button>
       </b-col>
       <b-card-group deck>
-        <template v-for="(game, index) in games">
-          <b-col cols="12" md="4" class="text-left cursor-pointer" :key="index">
+        <template v-for="(game) in games">
+          <b-col cols="12" md="4" class="text-left cursor-pointer" :key="game.id">
             <b-card
               class="my-3 card-image-overlay"
-              @click="setGameAndRedirect(game, index)"
+              @click="setGameAndRedirect(game)"
               overlay
               :img-src="game.imagem"
               img-alt="img"
@@ -85,55 +89,25 @@
 
 <script>
 import { mapMutations } from "vuex";
+import auth from "@/mixins/auth";
+import games from "@/mixins/games";
 
 export default {
   transition: "slide",
-  data() {
-    return {
-      addModal: {
-        show: false,
-        nome: "",
-        empresa: "",
-        imagem: "",
-        ano: "",
-      },
-    };
-  },
+  mixins: [auth, games],
   methods: {
     ...mapMutations({
       setGame: "game/setGame",
-      addGame: "game/addGame",
     }),
 
-    setGameAndRedirect(game, index) {
-      game.index = index
+    setGameAndRedirect(game) {
       this.setGame(game);
 
       this.$router.push("/game");
     },
-    clearModalAdd() {
-      this.addModal = {
-        show: false,
-        nome: "",
-        empresa: "",
-        imagem: "",
-        ano: "",
-      };
-    },
-    submitAdd() {
-      this.addGame({
-        nome: this.addModal.nome,
-        empresa: this.addModal.empresa,
-        imagem: this.addModal.imagem,
-        ano: this.addModal.ano,
-      });
-      this.clearModalAdd();
-    },
   },
-  computed: {
-    games() {
-      return this.$store.state.game.games;
-    },
+  beforeMount() {
+    this.getGames();
   },
 };
 </script>
